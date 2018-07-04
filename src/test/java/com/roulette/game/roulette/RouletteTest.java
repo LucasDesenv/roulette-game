@@ -1,9 +1,9 @@
 package com.roulette.game.roulette;
 
-import com.roulette.game.player.Bet;
-import com.roulette.game.player.Mode;
-import com.roulette.game.player.Player;
-import com.roulette.game.player.PlayerRepository;
+import com.roulette.game.domain.bet.Bet;
+import com.roulette.game.domain.bet.Mode;
+import com.roulette.game.domain.player.Player;
+import com.roulette.game.domain.player.PlayerRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

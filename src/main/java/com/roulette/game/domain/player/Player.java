@@ -1,5 +1,7 @@
-package com.roulette.game.player;
+package com.roulette.game.domain.player;
 
+import com.roulette.game.domain.bet.Bet;
+import com.roulette.game.domain.bet.Mode;
 import com.roulette.game.exception.IllegalBetException;
 
 import java.math.BigDecimal;
@@ -13,12 +15,12 @@ import java.util.Optional;
 public class Player {
 
     private List<Bet> bets;
-    private String nickName;
+    private String nickname;
     private Double totalWin = 0d;
     private Double totalBet = 0d;
 
-    public Player(String nickName){
-        this.nickName = nickName;
+    public Player(String nickname){
+        this.nickname = nickname;
         this.bets = new LinkedList<>();
     }
 
@@ -34,8 +36,8 @@ public class Player {
         return bets;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
     public void reset() {
@@ -62,18 +64,18 @@ public class Player {
 
         Player player = (Player) o;
 
-        return nickName != null ? nickName.equals(player.nickName) : player.nickName == null;
+        return nickname != null ? nickname.equals(player.nickname) : player.nickname == null;
     }
 
     @Override
     public int hashCode() {
-        return nickName != null ? nickName.hashCode() : 0;
+        return nickname != null ? nickname.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Player{" +
-                "nickName='" + nickName + '\'' +
+                "nickName='" + nickname + '\'' +
                 '}';
     }
 }

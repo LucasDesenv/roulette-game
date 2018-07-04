@@ -1,6 +1,6 @@
 package com.roulette.game;
 
-import com.roulette.game.player.PlayerRepository;
+import com.roulette.game.domain.player.PlayerRepository;
 import com.roulette.game.roulette.Roulette;
 
 import java.net.URL;

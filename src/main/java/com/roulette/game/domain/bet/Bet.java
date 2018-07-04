@@ -1,4 +1,4 @@
-package com.roulette.game.player;
+package com.roulette.game.domain.bet;
 
 import com.roulette.game.exception.IllegalBetException;
 
@@ -17,11 +17,13 @@ public class Bet {
     private AtomicReference<BigDecimal> amountWon = new AtomicReference<>(BigDecimal.ZERO);
     private static final BigDecimal WIN_36X = new BigDecimal(36);
     private static final BigDecimal WIN_2X = new BigDecimal(2);
+    private static final Integer MAX_NUMBER_BET = 36;
+    private static final Integer MIN_NUMBER_BET = 1;
 
 
     public Bet(Optional<Integer> numberBet, BigDecimal amountBet, Mode mode) throws IllegalBetException {
         numberBet.ifPresent(number -> {
-            if (number > 36 || number < 1){
+            if (number > MAX_NUMBER_BET || number < MIN_NUMBER_BET){
                 throw new IllegalBetException();
             }
         });

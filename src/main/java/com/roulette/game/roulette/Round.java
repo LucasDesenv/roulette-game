@@ -1,8 +1,8 @@
 package com.roulette.game.roulette;
 
-import com.roulette.game.player.Mode;
-import com.roulette.game.player.Player;
-import com.roulette.game.player.PlayerRepository;
+import com.roulette.game.domain.bet.Mode;
+import com.roulette.game.domain.player.Player;
+import com.roulette.game.domain.player.PlayerRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 /**
  * Created by lusouza on 02/07/18.
  */
-public class RoundThread extends Thread {
+public class Round extends Thread {
 
     private volatile boolean running = true;
 

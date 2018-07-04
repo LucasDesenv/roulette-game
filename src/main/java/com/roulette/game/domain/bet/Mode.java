@@ -1,4 +1,4 @@
-package com.roulette.game.player;
+package com.roulette.game.domain.bet;
 
 /**
  * Created by lusouza on 02/07/18.

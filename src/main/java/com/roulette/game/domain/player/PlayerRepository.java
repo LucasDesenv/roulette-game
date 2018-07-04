@@ -1,4 +1,4 @@
-package com.roulette.game.player;
+package com.roulette.game.domain.player;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class PlayerRepository {
 
     public static Player findByNickname(String nickName){
         return players.stream()
-                .filter(player -> player.getNickName().equals(nickName))
+                .filter(player -> player.getNickname().equals(nickName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Invalid nickname"));
     }

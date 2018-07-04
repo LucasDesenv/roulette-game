@@ -1,8 +1,8 @@
 package com.roulette.game;
 
+import com.roulette.game.domain.bet.Mode;
+import com.roulette.game.domain.player.Player;
 import com.roulette.game.exception.IllegalBetException;
-import com.roulette.game.player.Mode;
-import com.roulette.game.player.Player;
 import org.junit.Test;
 
 import java.math.BigDecimal;

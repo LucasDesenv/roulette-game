@@ -1,8 +1,8 @@
 package com.roulette.game.roulette;
 
-import com.roulette.game.player.Mode;
-import com.roulette.game.player.Player;
-import com.roulette.game.player.PlayerRepository;
+import com.roulette.game.domain.bet.Mode;
+import com.roulette.game.domain.player.Player;
+import com.roulette.game.domain.player.PlayerRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,10 +23,10 @@ import static org.mockito.Mockito.when;
  * Created by lusouza on 02/07/18.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class RoundThreadTest {
+public class RoundTest {
 
     @Mock
-    private RoundThread roundThread = new RoundThread();
+    private Round round = new Round();
 
     @Before
     public void before(){
@@ -42,9 +42,9 @@ public class RoundThreadTest {
     public void placeBetsToThePlayers() throws IOException, InterruptedException {
         BufferedReader bufferedReader = org.mockito.Mockito.mock(BufferedReader.class);
         when(bufferedReader.readLine()).thenReturn("Alex EVEN 100").thenReturn("Lucas 9 300");
-        doCallRealMethod().when(roundThread).placeTheBet(bufferedReader);
-        roundThread.placeTheBet(bufferedReader);
-        roundThread.placeTheBet(bufferedReader);
+        doCallRealMethod().when(round).placeTheBet(bufferedReader);
+        round.placeTheBet(bufferedReader);
+        round.placeTheBet(bufferedReader);
 
         final Player alex = PlayerRepository.findByNickname("Alex");
         final Player lucas = PlayerRepository.findByNickname("Lucas");

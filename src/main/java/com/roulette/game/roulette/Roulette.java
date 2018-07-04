@@ -1,8 +1,8 @@
 package com.roulette.game.roulette;
 
-import com.roulette.game.player.Bet;
-import com.roulette.game.player.Player;
-import com.roulette.game.player.PlayerRepository;
+import com.roulette.game.domain.bet.Bet;
+import com.roulette.game.domain.player.Player;
+import com.roulette.game.domain.player.PlayerRepository;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  */
 public class Roulette extends Thread{
     private Integer numberRolled;
-    private RoundThread roundThread;
+    private Round round;
     private static final PrimitiveIterator.OfInt NUMBERS = new Random().ints(1,36).iterator();
     private Integer numberOfRounds;
     private List<Player> players;
@@ -41,11 +41,11 @@ public class Roulette extends Thread{
             public void run() {
                 executeTask();
             }
-        }, 10000, 10000);
+        }, 30000, 30000);
     }
 
     void executeTask() {
-        roundThread.stopRunning();
+        round.stopRunning();
         rollBall();
         markWinners();
         printBets();
@@ -54,7 +54,7 @@ public class Roulette extends Thread{
             System.exit(0);
         }
         restartBets();
-        roundThread.interrupt();
+        round.interrupt();
         startBets();
     }
 
@@ -74,7 +74,7 @@ public class Roulette extends Thread{
         final AtomicInteger tableIndex = new AtomicInteger(2);
 
         players.forEach(player -> {
-            table[tableIndex.getAndIncrement()] = new String[]{ player.getNickName(), player.getTotalWin().toString(), player.getTotalBet().toString()};
+            table[tableIndex.getAndIncrement()] = new String[]{ player.getNickname(), player.getTotalWin().toString(), player.getTotalBet().toString()};
         });
 
         for (final Object[] row : table) {
@@ -93,8 +93,8 @@ public class Roulette extends Thread{
     }
 
     void startBets() {
-        roundThread = new RoundThread();
-        roundThread.start();
+        round = new Round();
+        round.start();
     }
 
     void printBets() {
@@ -109,7 +109,7 @@ public class Roulette extends Thread{
                 final String winLoseLabel = bet.hasWon() ? "WIN" : "LOSE";
                 final String betLabel = bet.getNumberBet().isPresent() ? bet.getNumberBet().get().toString() : bet.getMode().toString();
 
-                table[tableIndex.getAndIncrement()] = new String[]{ player.getNickName(), betLabel, winLoseLabel, String.valueOf(bet.getAmountWon())};
+                table[tableIndex.getAndIncrement()] = new String[]{ player.getNickname(), betLabel, winLoseLabel, String.valueOf(bet.getAmountWon())};
             });
         });
 

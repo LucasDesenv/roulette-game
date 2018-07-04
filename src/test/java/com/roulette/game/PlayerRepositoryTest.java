@@ -1,6 +1,6 @@
 package com.roulette.game;
 
-import com.roulette.game.player.PlayerRepository;
+import com.roulette.game.domain.player.PlayerRepository;
 import com.roulette.game.roulette.RouletteTest;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,8 +26,8 @@ public class PlayerRepositoryTest {
 
     @Test
     public void mustFindPlayerByNickname(){
-        Assert.assertEquals("Lucas", PlayerRepository.findByNickname("Lucas").getNickName());
-        Assert.assertEquals("Alex", PlayerRepository.findByNickname("Alex").getNickName());
+        Assert.assertEquals("Lucas", PlayerRepository.findByNickname("Lucas").getNickname());
+        Assert.assertEquals("Alex", PlayerRepository.findByNickname("Alex").getNickname());
     }
 
     @Test(expected = IllegalArgumentException.class)
